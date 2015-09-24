@@ -40,7 +40,7 @@ foreach($port as $p) {
         ?>
         <span class="img-holder">
 
-          <img class="hide" src="" data-thumb="<?php echo $siteDir;?>/assets/blank.png" />
+          <img class="hide" src="" data-thumb="<?php echo $siteDir;?>/assets/imgs/blank.png" />
         </span>
         <?php
       }
@@ -48,7 +48,7 @@ foreach($port as $p) {
 
       ?>
       <span class="overlay"></span>
-      
+
       <span class="title head-block">
         <span class="top"><?php echo $p->post_title;?></span>
       </span>

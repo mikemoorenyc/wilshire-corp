@@ -22,9 +22,9 @@
               $email = trim($_POST['user_login']);
 
               if( empty( $email ) ) {
-                  $error = 'Enter a username or e-mail address..';
+                  $error = 'Enter an e-mail address..';
               } else if( ! is_email( $email )) {
-                  $error = 'Invalid username or e-mail address.';
+                  $error = 'Invalid e-mail address.';
               } else if( ! email_exists( $email ) ) {
                   $error = 'There is no user registered with that email address.';
               } else {
@@ -57,7 +57,7 @@
                           $success = 'Check your email address for your new password.';
 
                   } else {
-                      $error = 'Oops something went wrong updaing your account.';
+                      $error = 'Oops something went wrong updating your account.';
                   }
 
               }
@@ -74,7 +74,7 @@
       <?php
       if( !(isset( $_POST['action'] ) && 'reset' == $_POST['action']) ) {
         ?>
-        <p class="login-msg">Please enter your username or email address. You will receive your new password via email.</p>
+        <p class="login-msg">Please enter your email address. You will receive your new password via email.</p>
         <?php
       }
 
@@ -82,7 +82,7 @@
       ?>
 
       <form method="post">
-              <p><label for="user_login">Username or E-mail:</label>
+              <p><label for="user_login">Email</label>
                   <input type="text" name="user_login" id="user_login" value="" /></p>
               <p class="login-submit">
                   <input type="hidden" name="action" value="reset" />

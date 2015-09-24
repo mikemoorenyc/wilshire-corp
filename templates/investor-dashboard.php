@@ -71,6 +71,14 @@ $usermessage = get_user_meta( $user_ID, 'usermessage', true );
   <!-- RELEASE THE FILE GETTER -->
 
 <?php
+
+function cmp($a, $b) {
+  if ($a['isoDate'] == $b['isoDate']) {
+      return 0;
+  }
+  return ($a['isoDate'] < $b['isoDate']) ? -1 : 1;
+}
+
 //GET ALL PROPERTY PAGES AND GET THEIR ASSOCIATED PROPERTY CATEGORY
 $siloArray = array();
 $propertyArray = array();
@@ -95,7 +103,10 @@ if($files_in_cat_query->have_posts()) {
     $prop = get_the_terms( $p->ID, 'properties' );
     if($prop) {
       if( !(in_array($prop[0]->slug, $propertyArray))) {
-        array_push($propertyArray, $prop[0]->slug);
+        array_push($propertyArray, array(
+          'slug' => $prop[0]->slug,
+          'id' => $p->ID
+        ));
       }
     }
   }
@@ -118,7 +129,7 @@ $args = array(
                     array(
                       'taxonomy' => 'properties',
                       'field'    => 'slug',
-                      'terms'    => $pa,
+                      'terms'    => $pa['slug'],
                     ),
                   )
 );
@@ -128,6 +139,7 @@ if ( $pfiles_query->have_posts()):
   $pfiles = $pfiles_query->get_posts();
 
   foreach($pfiles as $pf):
+
     array_push($fileArray, array(
       'isoDate' => intval(get_the_date( "Ymd", $pf->ID )),
       'fileID' => $pf->ID,
@@ -150,7 +162,7 @@ $args = array(
                         array(
                           'taxonomy' => 'properties',
                           'field'    => 'slug',
-                          'terms'    => $pa,
+                          'terms'    => $pa['slug'],
                         ),
                       )
     );
@@ -178,13 +190,13 @@ endif;
 
 //ENDING THE PROPERTY FOREACH
 array_push($siloArray, array(
-  'property' => $pa,
+  'property-slug' => $pa['slug'],
+  'property-id' => $pa['id'],
   'files' => $fileArray
 ));
 endforeach;
 
-//var_dump($siloArray);
-$siloArray = array();
+
 
 
 
@@ -194,30 +206,170 @@ $siloArray = array();
 //WHAT HAPPENS IF THERE'S NO FILES
 if (count($siloArray) == 0) :
 
-?>
+echo '<h2> You have no files for view at this time.</h2>';
 
-<h2> You have no files for view at this time.</h2>
+endif;
+//WE HAVE FILES!
+if(count($siloArray) > 0):?>
+<ul class="clearfix no-style">
+<?php foreach($siloArray as $s):?>
+  <li class="property">
+    <div class="prop-header">
+      <?php $catInfo = get_term_by('slug', $s['property-slug'], 'properties'); ?>
+      <h2>
+        <?php echo $catInfo->name;?>
+      </h2>
+      <?php
+      // GET THE FUND STUFF
+      // GET TOTAL CAPITAL
+      $total = get_post_meta( $s['property-id'], "_amount", true );
+      if ($total !== ''):?>
+      <div class="fund outstanding">
+      Invested Capital: <strong><?php echo $total;?></strong>
+      </div>
+      <?php endif;
 
+      //GET THE INDIVIDUAL FUNDS
+      $funds = get_post_meta( $s['property-id'], "individual-investment-funds", true );
+      if($funds !== ''):
+      foreach($funds as $fund):
+      ?>
+      <div class="fund">
+        <?php echo $fund['fund-name'];?>: <strong><?php echo $fund['investment-amount'];?></strong>
+
+      </div>
+
+      <?php
+      endforeach;
+      endif;?>
+
+    </div> <!-- PROP HEADER -->
+    <div class="prop-body">
+    <?php
+    // GET FILES
+    $files = $s['files'];
+    if (count($files) == 0) :
+      echo '<h2 class="no-files">You have no files for this property</h2>';
+
+    //END FOR NO FILES
+    endif;
+
+
+    if (count($files) > 0):
+      usort($files, 'cmp');
+      $files = array_reverse($files);
+
+    ?>
+
+    <ul class="file-list no-style">
+      <?php
+      if(count($files > 3)) {
+        $looper = 3;
+      } else {
+        $looper = count($files);
+      }
+
+
+      ?>
+
+
+    <?php for($i = 1; $i < $looper; $i++):
+      $file = $files[$i-1];
+      ?>
+      <li>
+      <!-- FOR PRIVATE FILE  -->
+      <?php if($file['fileType'] == 'private-file'):
+
+      $attached_files = cuar_get_the_attached_files($file['fileID']);
+
+        ?>
+
+        <div class="date"><?php echo get_the_date('m-d-Y', $file['fileID'] );?> </div>
+        <div class="title"><?php echo get_the_title($file['fileID']);?></div>
+
+        <?php foreach ($attached_files as $file_id => $newFile) : ?>
+        <a class="dl-link no-history" target="_blank" href="<?php echo get_permalink($file['fileID']).'/download/'.$file_id; ?>">
+          Click to download
+        </a>
+
+        <?php endforeach;?>
+
+      <?php endif;?>
+
+      <!-- FOR GROUP FILE -->
+      <?php if($file['fileType']=='group-file'):?>
+        <div class="date"><?php echo get_the_date('m-d-Y', $file['fileID'] );?> </div>
+        <div class="title"><?php echo get_the_title($file['fileID']);?></div>
+
+        <?php
+        $filelink = get_post_meta( $file['fileID'], "group-file", true );
+        $filelink = $filelink[0];
+        $filelink = wp_get_attachment_url( $filelink['file'], 'full' );
+
+
+        ?>
+
+        <form target="_blank" class="download-submitter" method="post" action="<?php echo $siteDir;?>/downloader.php">
+         <input type="submit" class="dl-link" value="Click here to download"/>
+         <input type="hidden" value="<?php echo $filelink;?>" name="download-id" />
+         <input type="hidden" value="groupfile" name="download-type" />
+       </form>
+
+      <?php endif;?>
+
+      </li>
+    <?php endfor;?>
+    </ul>
+
+    <a class="no-history archive" href="<?php echo home_url('/file_archive/?building_id='.$s['property-id']);?>">
+<?php echo $catInfo->name;?> Archive
+    </a>
+
+    <?php
+    //END FOR YES FILES
+    endif;?>
+
+  </div>
+
+  </li>
+<?php endforeach;?>
+</ul>
 
 <?php endif;?>
 
-</div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div id="investor-footer-links">
+<a class="edit no-history" href="<?php echo home_url('/edit-account/');?>">Edit Account</a>
+
+<?php
+if (  current_user_can( 'manage_options' ) && '/wp-admin/admin-ajax.php' != $_SERVER['PHP_SELF'] ) {
+  ?>
+  <a class="admin no-history" href="<?php echo home_url('/wp-admin/');?>">Admin</a>
+
+  <?php
+}
+
+
+?>
+</div>
 
 
 

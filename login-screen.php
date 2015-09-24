@@ -58,6 +58,7 @@ function redirect_non_admin_users() {
 function add_custom_query_var( $vars ){
   $vars['1'] = "doc_id";
 	$vars['2'] = "building_id";
+  $vars['3'] = "doc_type";
   return $vars;
 }
 add_filter( 'query_vars', 'add_custom_query_var' );

@@ -7,3 +7,9 @@ REQUIRED PLUGINS:
 - SIMPLE PAGE ORDERING
 - WCK CUSTOM FIELDS
 - WP CUSTOMER AREA
+- WP EMAIL LOGIN
+
+Still to do
+-----------
+- Edit Account page
+- Property Archive page
