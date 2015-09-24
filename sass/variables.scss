@@ -1,0 +1,33 @@
+$ts: 0.5s;
+
+/*Site Directory. Probably Don't need this*/
+//Looks like url('@{siteDir}/assets/whatever.png')
+
+
+
+$imgDir: '../assets/imgs';
+$siteDir: '../assets';
+
+
+/*BREAK POINTS*/
+$dt-break: 801px;
+$tab: 'min-width:401px';
+$dt: 'min-width:#{$dt-break}';
+$dt-max: 'max-with:#{$dt-break}';
+
+/* SITE COLORS */
+
+$main-color: white;
+$dark-blue: #003052;
+$teal: #15dbd2;
+$teal-dull: #15c6bd;
+
+/*FONTS*/
+$font-family:  'Avenir',"Helvetica", sans-serif;
+$font-size-base: 14px;
+$line-height-base:  1.428571429;
+
+$dt-big: 50px;
+
+/*MARGINS*/
+$mob-margin: percentage( 12 / 320);

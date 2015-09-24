@@ -1,0 +1,16 @@
+#contact-content {
+  font-size:(16em/14);
+  @media($dt) {
+    font-size: 1em;
+  }
+
+  h1 {
+    color: $teal;
+    font-size: 24px;
+    margin-bottom:2em;
+    @media($dt) {
+      font-size:$dt-big;
+      margin-bottom:1em;
+    }
+  }
+}

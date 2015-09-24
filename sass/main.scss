@@ -1,0 +1,25 @@
+//Core
+@import 'variables.scss';
+@import 'mixins.scss';
+@import 'inline-modules/fonts.scss';
+@import "normalize.scss";
+@import "scaffold.scss";
+@import "utilities.scss";
+@import 'slick.scss';
+@import 'inline-modules/type.scss';
+@import 'inline-modules/header.scss';
+@import 'inline-modules/background-image.scss';
+@import 'inline-modules/home-page-content.scss';
+@import 'inline-modules/strategy.scss';
+@import 'inline-modules/contact-page.scss';
+@import 'inline-modules/team.scss';
+@import 'inline-modules/portfolio.scss';
+@import 'inline-modules/mouse-events.scss';
+@import 'inline-modules/scrollbar.scss';
+@import 'login.scss';
+@import 'investor.scss';
+#css-checker {
+  display: none;
+  z-index:-9999;
+
+}

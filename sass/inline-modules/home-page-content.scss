@@ -1,0 +1,49 @@
+#home-page-content {
+
+  .read-more-content {
+    display:none;
+  }
+  h1 {
+    font-size: 2em;
+    margin-bottom:.5em;
+    @media($dt) {
+      font-size:$dt-big;
+      margin-bottom:1em;
+    }
+  }
+  p {
+    font-size: (16em/14);
+    color:$teal;
+    margin: 0;
+    padding: 0 0 1em 0;
+    &:last-child {
+      padding-bottom: 0;
+    }
+    @media($dt) {
+      font-size:24px;
+    }
+  }
+  a.read-more {
+    display:block;
+    font-size: (13em/14);
+    margin-top: 2em;
+    color:white;
+    &._opened {
+      svg {
+        transform:rotate(180deg);
+      }
+    }
+    svg {
+      margin:5px auto 0 auto;
+      width: 16px;
+      height:10px;
+      fill:white;
+
+      .st0,*, polygon {
+        fill:white;
+
+      }
+    }
+
+  }
+}

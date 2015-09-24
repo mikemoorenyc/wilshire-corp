@@ -1,0 +1,153 @@
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index:999;
+  height:60px;
+  @media($dt) {
+    height: 130px;
+  }
+  > .inner {
+    padding: 15px $mob-margin;
+    @media($dt) {
+      padding: 0;
+    }
+  }
+  #logo {
+    @media($dt) {
+      position: absolute;
+      left: 50px;
+      top: 50%;
+      transform:translateY(-50%);
+    }
+    a {
+      display:block;
+      img {
+        width: 166px;
+        height: 28px;
+        margin:0;
+        @media($dt) {
+          width:226px;
+          height: 37px;
+        }
+      }
+    }
+  }
+  .touch-open, .touch-close {
+    display:block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform:translateY(-50%);
+    width: 50px;
+    height: 50px;
+    svg {
+      width: 20px;
+      height: 14px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      * {
+        fill: white;
+      }
+    }
+  }
+  .touch-close {
+    top: 0;
+    width: 50px;
+    height: 50px;
+    transform: translate(0,0);
+    svg {
+      width: 20px;
+      height: 20px;
+      * {
+        fill:$teal;
+      }
+    }
+  }
+  nav#mainNav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    transform-origin:top right;
+    transform:translateX(100%);
+    transition: all $ts;
+    @media($dt) {
+      background: none;
+      position: absolute;
+      right: 50px;
+      left: auto;
+      top: 50%;
+      bottom: auto;
+
+      transform-origin:center center;
+      transform: translateY(-50%);
+    }
+    html._touch-menu-open & {
+      transform:translateX(0);
+    }
+    > ul {
+      width: 100%;
+      position:absolute;
+      left: 0;
+      top: 50%;
+      transform:translateY(-50%);
+      text-align: center;
+      @media($dt) {
+        position:static;
+        transform: none;
+        text-align: right;
+      }
+      > li {
+        @media($dt) {
+          float:left;
+          margin-left: 20px;
+        }
+        a {
+          display: inline-block;
+          padding: 10px 0;
+          color: $dark-blue;
+          font-size:24px;
+          position: relative;
+          transition: color $ts;
+          @media($dt) {
+            font-size: 18px;
+            color:white;
+          }
+          &:after {
+            @extend %before-fix;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: transparent;
+            transition:background $ts;
+          }
+          html.no-touch & {
+            &:hover {
+              color: $teal;
+              &:after {
+                background: $teal;
+              }
+            }
+          }
+
+        }
+        &.__active {
+          a {
+            color: $teal;
+            &:after {
+              background: $teal;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,189 @@
+*, *:before, *:after {
+   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+html {
+  overflow:hidden;
+}
+body {
+  font-family: $font-family;
+  font-size:14px;
+  line-height: $line-height-base;
+  color: $main-color;
+  background-color: $dark-blue;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased!important;
+  -webkit-text-size-adjust: none;
+  text-align:center;
+  @media($dt) {
+    font-size: 16px;
+  }
+}
+
+#main-content {
+  position:relative;
+}
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+textarea {
+  resize: none;
+}
+// Links
+a {
+  color: white;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+      color:$teal;
+  }
+
+}
+a, a:hover, a:active, a:focus {
+  outline: 0;
+
+}
+
+// Figures
+//
+// We reset this here because previously Normalize had no `figure` margins. This
+// ensures we don't break anyone's use of the element.
+
+// IMGS
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+svg {
+  display: block;
+  max-width:100%;
+}
+
+//TYPE
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: normal;
+}
+
+
+
+//TYPE STUFF
+ul, p, ol {
+  margin-bottom: 1.0em;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+ul.no-style {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    margin: 0;
+  }
+}
+ol, ul {
+  margin: 0;
+  margin-bottom: 1.5em;
+  padding-left: 40px;
+  > li {
+    margin-bottom: .25em;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+blockquote {
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  border: 0;
+  color: inherit;
+  font-style: italic;
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Note: Deprecated small and .small as of v3.1.0
+  // Context: https://github.com/twbs/bootstrap/issues/11660
+  footer,
+  small,
+  .small {
+    display: block;
+    font-size: 80%; // back to default font-size
+    &:before {
+    }
+  }
+}
+
+#dynamic-page-content {
+  transition:opacity $ts;
+  opacity:1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  html.__page-loading & {
+    opacity: 0;
+  }
+}
+
+
+#scrolling-frame {
+position:fixed;
+left: 0;
+bottom: 0;
+right: 0;
+  > .inner {
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+    .spacer, #main-content {
+      position:relative;
+      display:inline-block;
+      vertical-align:middle;
+    }
+    .spacer{
+      width: 0;
+      height: 100%;
+    }
+    #main-content {
+      width: 99.9%;
+      padding:  0 0 60px 0;
+      @media($dt) {
+        padding-bottom: 130px;
+      }
+    }
+  }
+}
+.interior-holder {
+  margin: 0 ($mob-margin * 2);
+  @media(min-width:900px) {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+}

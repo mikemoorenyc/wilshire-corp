@@ -1,0 +1,77 @@
+#main-login-form {
+  max-width: 320px;
+  margin: 0 auto;
+  .login-msg {
+    background: white;
+    color: #444;
+    font-size: .85em;
+    padding: 10px;
+    border-left: 3px solid $teal;
+    text-align: left;
+    a {
+      color: $teal;
+      text-decoration:underline;
+    }
+    &.error {
+      border-color: red;
+    }
+  }
+  .bottom-content {
+    margin-top: 1em;
+    font-size: .85em;
+    text-align: left;
+  }
+  form {
+    background: rgba(black,.2);
+    padding: 25px;
+    border: 2px solid white;
+    @extend %clearfix;
+    > p {
+      margin: 1em 0 0 0;
+      &:first-child {
+        margin: 0;
+      }
+      label, input {
+        display: block;
+        width: 100%;
+        text-align:left;
+      }
+      label {
+        font-size:.85em;
+        text-transform:uppercase;
+        margin-bottom: .5em;
+        line-height:1em;
+      }
+      input[type="text"], input[type="password"] {
+        padding: 10px;
+        font-weight:bold;
+        color:white;
+        background:rgba(white,.2);
+      }
+      &.login-remember {
+        float: left;
+        label {
+          text-transform: none;
+          margin: 10px 0 0 0;
+          input {
+            display:inline-block;
+            margin-right:5px;
+            width: auto;
+          }
+        }
+      }
+      &.login-submit {
+        float:right;
+        input[type="submit"] {
+          width: auto;
+          background: $teal;
+          padding: 5px 10px;
+          cursor: pointer;
+          text-transform:uppercase;
+          color: white;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

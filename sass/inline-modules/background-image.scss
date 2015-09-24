@@ -1,0 +1,34 @@
+#background-image {
+  position:fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  .holder {
+    filter:grayscale(1);
+    position:absolute;
+    left: 0;
+    top: 0;
+    width:100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+  }
+  &:after {
+    @extend %before-fix;
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($dark-blue, .9);
+  }
+  .bg-flipper {
+    opacity: 0;
+    transition:opacity $ts;
+    &.__hovering, &.__activated {
+      opacity: 1;
+    }
+  }
+}
