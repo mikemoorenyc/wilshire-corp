@@ -14,3 +14,7 @@ Still to do
 - Edit Account page
 - Property Archive page
 - make sure team bg works (doesn't work on server)
+- fix the single team page to work if there's no bg
+- Add in loading indicator
+- Disable interior clicks on "page loading"
+- switch p margins to padding in strategy carousel
