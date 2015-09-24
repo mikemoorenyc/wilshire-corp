@@ -50,7 +50,7 @@ foreach($port as $p) {
   } else {
     ?>
     <div class="holder team-bg count-<?php echo $pLooper;?>" data-count="<?php echo $pLooper;?>">
-      <img src="" data-lg="<?php echo siteDir;?>/assets/imgs/blank.png" data-sm="<?php echo siteDir;?>/assets/imgs/blank.png" class="hide dyna-load bg-loader team-loader"/>
+      <img src="" data-lg="<?php echo $siteDir;?>/assets/imgs/blank.png" data-sm="<?php echo siteDir;?>/assets/imgs/blank.png" class="hide dyna-load bg-loader team-loader"/>
     </div>
     <?php
   }
