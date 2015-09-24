@@ -13,3 +13,4 @@ Still to do
 -----------
 - Edit Account page
 - Property Archive page
+- make sure team bg works (doesn't work on server)
