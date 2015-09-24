@@ -14,6 +14,9 @@ function my_custom_fonts() {
     #wp-admin-bar-wp-logo {
       display: none;
     }
+    #wp-content-editor-tools {
+      background: white;
+    }
   </style>';
 }
 
