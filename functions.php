@@ -15,6 +15,9 @@ include 'hiding-customer-area.php';
 //LOGIN SCREEN
 include 'login-screen.php';
 
+//NEW TAXONOMIES
+include 'new-tax.php';
+
 
 
 // Custom functions

@@ -14,9 +14,16 @@ html.mix-blend-mode {
   }
 
   .strat-block {
+    p {
+      margin: 0;
+      padding-bottom: 1em;
+      &:last-child {
+        padding-bottom:0;
+      }
+    }
     > h1 {
       font-size: 24px;
-      margin: .5em;
+      padding: .5em;
       color:$teal;
       @media($dt) {
         font-size:$dt-big;
@@ -24,6 +31,7 @@ html.mix-blend-mode {
       a {
         color: $teal;
       }
+
     }
     .content {
       display:none;
