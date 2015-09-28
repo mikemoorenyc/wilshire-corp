@@ -18,4 +18,4 @@ Still to do
 - ~~fix the single team page to work if there's no bg~~
 - ~~Add in loading indicator~~
 - ~~Disable interior clicks on "page loading"~~
-- ~~switch p margins to padding in strategy carousel ~~
+- ~~switch p margins to padding in strategy carousel~~
