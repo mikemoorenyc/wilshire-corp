@@ -5,7 +5,7 @@
     <span class="hide">
       <?php echo $siteTitle;?>
     </span>
-    <img src="<?php echo $siteDir;?>/assets/imgs/main-logo.svg" alt="Wilshire Capital"/>
+    <img src="<?php echo $siteDir;?>/assets/imgs/main-logo.svg" alt="Wilshire Capital" />
   </a>
   </h1>
 

@@ -23,10 +23,14 @@ header {
     }
     a {
       display:block;
-      img {
+      img, svg {
         width: 166px;
         height: 28px;
         margin:0;
+        *.st0 {
+          fill:white;
+        }
+
         @media($dt) {
           width:226px;
           height: 37px;

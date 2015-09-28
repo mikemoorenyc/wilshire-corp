@@ -6,6 +6,14 @@
 
 <?php
 
+include_once 'Mobile_Detect.php';
+$detect = new Mobile_Detect;
+if($detect->isMobile() == true) {
+  $siteURL = get_site_url();
+  header("Location: ".$siteURL);
+  die();
+}
+
 if(!is_user_logged_in()) {
   $siteURL = get_site_url();
   header("Location: ".$siteURL);
@@ -18,17 +26,7 @@ if(!is_user_logged_in()) {
 
 <?php get_header();?>
 
-<!-- REDIRECTS -->
-<?php
-if($mobile == true) {
-  ?>
-<script>
-window.location = '<?php echo home_url();?>';
-</script>
 
-  <?php
-}
-?>
 
 <div id="investor-container">
   <div class="investor-header">
@@ -321,7 +319,7 @@ if(count($siloArray) > 0):?>
     <?php endfor;?>
     </ul>
 
-    <a class="no-history archive" href="<?php echo home_url('/file_archive/?building_id='.$s['property-id']);?>">
+    <a class="no-history archive" href="<?php echo home_url('/file-archive/?building_id='.$s['property-id']);?>">
 <?php echo $catInfo->name;?> Archive
     </a>
 

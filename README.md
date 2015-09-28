@@ -11,11 +11,11 @@ REQUIRED PLUGINS:
 
 Still to do
 -----------
-- Edit Account page
-- Remove property category from WCK
+- ~~Edit Account page~~
+- ~~Remove property category from WCK~~
 - Property Archive page
-- make sure team bg works (doesn't work on server)
-- fix the single team page to work if there's no bg
-- Add in loading indicator
+- ~~make sure team bg works (doesn't work on server)~~
+- ~~fix the single team page to work if there's no bg~~
+- ~~Add in loading indicator~~
 - ~~Disable interior clicks on "page loading"~~
-- switch p margins to padding in strategy carousel (didn't really work)
+- ~~switch p margins to padding in strategy carousel ~~

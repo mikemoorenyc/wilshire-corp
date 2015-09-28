@@ -60,6 +60,10 @@ function theHistory() {
   $(window).on('statechange', function () {
 
       //INITIATE LOADING ANIMATION
+      if($('#loader-bar').hasClass('added') == false) {
+        $('body').append('<div id="loader-bar"class="added"></div>');
+      }
+
 
       $('html').addClass("__page-loading");
 

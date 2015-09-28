@@ -14,6 +14,10 @@ $meta = $meta[0];
     $tl = $tl[0];
     $ts = wp_get_attachment_image_src($tid, 'large', false);
     $ts = $ts[0];
+    if(!(has_post_thumbnail())) {
+      $ts = $siteDir.'/assets/imgs/blank.png';
+      $tl = $siteDir.'/assets/imgs/blank.png';
+    }
     ?>
     <img src="" data-lg="<?php echo $tl;?>" data-sm="<?php echo $ts;?>" class="hide preload dyna-load bg-loader"/>
 

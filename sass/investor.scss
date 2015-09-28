@@ -17,6 +17,12 @@
         color:$teal;
       }
     }
+    .fund {
+      margin-top:.5em;
+      strong {
+        color:$teal;
+      }
+    }
     .user-message {
       max-width: 880px;
       margin: 1em auto 0 auto;
@@ -107,5 +113,62 @@
   bottom: 30px;
   a {
     margin-right: 15px;
+  }
+}
+
+
+//EDIT ACCOUNT
+.custom-editor {
+  max-width: 500px;
+  margin: 2em auto 0 auto;
+  background: rgba(black,.2);
+  padding: 25px;
+  border: 2px solid white;
+  .form-group {
+    margin-bottom:1em;
+    &:last-child {
+      margin: 0;
+    }
+    label, input {
+      display: block;
+      width: 100%;
+      text-align:left;
+    }
+    label {
+      font-size:.85em;
+      text-transform:uppercase;
+      margin-bottom: .5em;
+      line-height:1em;
+    }
+    input[type="text"], input[type="password"] {
+      padding: 10px;
+      font-weight:bold;
+      color:white;
+      background:rgba(white,.2);
+    }
+    input[type="submit"] {
+      width: auto;
+      background: $teal;
+      padding: 5px 10px;
+      cursor: pointer;
+      text-transform:uppercase;
+      color: white;
+      font-weight: bold;
+      display:inline-block;
+    }
+  }
+  .submit-container {
+    text-align:right;
+  }
+  h3.pass {
+    margin-top:1em;
+    color:$teal;
+    font-size: 18px;
+    font-weight:bold;
+  }
+  .help-block {
+    display:block;
+    text-align: left;
+    font-size: 14px;
   }
 }

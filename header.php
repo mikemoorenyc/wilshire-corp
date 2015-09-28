@@ -191,7 +191,7 @@ ga('create', 'UA-67984898-1', 'auto');
   <?php
   $teamthumb = kc_get_option( 'meta-images', 'Images', 'team-img' );
 
-  if(has_post_thumbnail() ) {
+  if(has_post_thumbnail() || ($navslug == 'team' && is_archive() )) {
 
 
 

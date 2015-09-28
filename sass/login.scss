@@ -1,3 +1,19 @@
+.login-msg {
+  background: white;
+  color: #444;
+  font-size: .85em;
+  padding: 10px;
+  border-left: 3px solid $teal;
+  text-align: left;
+  a {
+    color: #444;
+    font-weight: bold;
+    text-decoration:underline;
+  }
+  &.error {
+    border-color: red;
+  }
+}
 #main-login-form {
   max-width: 320px;
   margin: 0 auto;
