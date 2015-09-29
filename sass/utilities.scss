@@ -123,7 +123,8 @@
 // MOBILE HIDE
 
 .mob-hide {
-  @media($dt-break) {
+
+  @media($dt-max) {
     display: none !important;
   }
 }

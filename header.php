@@ -215,6 +215,45 @@ ga('create', 'UA-67984898-1', 'auto');
     <?php
   }
 
+  //GET THE IMAGE if it's a file archive
+  if($navslug == 'filearchive'):
+    $prop_cat_id = intval($_GET["building_id"]);
+    $args = array(
+          'post_type' 		=> 'portfolio',
+          'orderby' 			=> 'date',
+          'order' 			=> 'DESC',
+          'posts_per_page' => -1,
+          'tax_query' =>  array(
+                            array(
+                              'taxonomy' => 'properties',
+                              'field'    => 'term_id',
+                              'terms'    => $prop_cat_id ,
+                            ),
+                          )
+        );
+    $gfiles_query = new WP_Query($args);
+    if ( $gfiles_query->have_posts()) :
+      $gfiles = $gfiles_query->get_posts();
+      if(count($gfiles > 0)) {
+        $backid = $gfiles[0]->ID;
+        if(has_post_thumbnail($backid)):
+          $tid = get_post_thumbnail_id($backid);
+          $tl = wp_get_attachment_image_src($tid, 'full', false);
+          $tl = $tl[0];
+          $ts = wp_get_attachment_image_src($tid, 'large', false);
+          $ts = $ts[0];
+          ?>
+          <div class="holder">
+            <img src="" data-lg="<?php echo $tl;?>" data-sm="<?php echo $ts;?>" class="hide preload dyna-load bg-loader"/>
+          </div>
+          <?php
+        endif;
+      }
+
+    endif;
+
+  endif;
+
   ?>
   </div>
   <div id="background-content">

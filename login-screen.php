@@ -6,16 +6,7 @@ function my_login_stylesheet() {
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
 
-function redirect_login_page() {
-    $login_page  = home_url( '/login/' );
-    $page_viewed = basename($_SERVER['REQUEST_URI']);
 
-    if( $page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
-        wp_redirect($login_page);
-        exit;
-    }
-}
-add_action('init','redirect_login_page');
 
 function login_failed() {
     $login_page  = home_url( '/login/' );
@@ -41,18 +32,13 @@ function logout_page() {
 add_action('wp_logout','logout_page');
 
 
-add_action( 'admin_init', 'redirect_non_admin_users' );
+
 /**
  * Redirect non-admin users to home page
  *
  * This function is attached to the 'admin_init' action hook.
  */
-function redirect_non_admin_users() {
-	if ( ! current_user_can( 'manage_options' ) && '/wp-admin/admin-ajax.php' != $_SERVER['PHP_SELF'] ) {
-		wp_redirect( home_url('/investor-dashboard/') );
-		exit;
-	}
-}
+
 
 //INVESTOR VARIABLES
 function add_custom_query_var( $vars ){
@@ -62,6 +48,52 @@ function add_custom_query_var( $vars ){
   return $vars;
 }
 add_filter( 'query_vars', 'add_custom_query_var' );
+
+function downloadMaker($id, $fileType) {
+  global $siteDir;
+  ?>
+  <!-- FOR PRIVATE FILE  -->
+  <li class="dl-assembly">
+  <?php if($fileType == 'private-file'):
+
+  $attached_files = cuar_get_the_attached_files($id);
+
+    ?>
+
+    <div class="date"><?php echo get_the_date('m-d-Y', $id );?> </div>
+    <div class="title"><?php echo get_the_title($id);?></div>
+
+    <?php foreach ($attached_files as $file_id => $newFile) : ?>
+    <a class="dl-link no-history" target="_blank" href="<?php echo get_permalink($id).'/download/'.$file_id; ?>">
+      Click to download
+    </a>
+
+    <?php endforeach;?>
+
+  <?php endif;?>
+
+  <!-- FOR GROUP FILE -->
+  <?php if($fileType=='group-file'):?>
+    <div class="date"><?php echo get_the_date('m-d-Y', $id );?> </div>
+    <div class="title"><?php echo get_the_title($id);?></div>
+
+    <?php
+    $filelink = get_post_meta( $id, "group-file", true );
+    $filelink = $filelink[0];
+    $filelink = wp_get_attachment_url( $filelink['file'], 'full' );
+
+
+    ?>
+
+    <form target="_blank" class="download-submitter" method="post" action="<?php echo $siteDir;?>/downloader.php">
+     <input type="submit" class="dl-link" value="Click here to download"/>
+     <input type="hidden" value="<?php echo $filelink;?>" name="download-id" />
+     <input type="hidden" value="groupfile" name="download-type" />
+   </form>
+</li>
+  <?php endif;?>
+  <?php
+}
 
 
 ?>

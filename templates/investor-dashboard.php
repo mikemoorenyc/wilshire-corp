@@ -215,7 +215,7 @@ if(count($siloArray) > 0):?>
     <div class="prop-header">
       <?php $catInfo = get_term_by('slug', $s['property-slug'], 'properties'); ?>
       <h2>
-        <?php echo $catInfo->name;?>
+        <?php echo $catInfo->name; ?>
       </h2>
       <?php
       // GET THE FUND STUFF
@@ -260,66 +260,31 @@ if(count($siloArray) > 0):?>
     ?>
 
     <ul class="file-list no-style">
+
       <?php
-      if(count($files > 3)) {
+
+      if(count($files) > 3) {
         $looper = 3;
       } else {
         $looper = count($files);
       }
 
-
       ?>
 
 
-    <?php for($i = 1; $i < $looper; $i++):
+    <?php for($i = 1; $i <= $looper; $i++):
       $file = $files[$i-1];
       ?>
-      <li>
-      <!-- FOR PRIVATE FILE  -->
-      <?php if($file['fileType'] == 'private-file'):
+   <?php
 
-      $attached_files = cuar_get_the_attached_files($file['fileID']);
-
-        ?>
-
-        <div class="date"><?php echo get_the_date('m-d-Y', $file['fileID'] );?> </div>
-        <div class="title"><?php echo get_the_title($file['fileID']);?></div>
-
-        <?php foreach ($attached_files as $file_id => $newFile) : ?>
-        <a class="dl-link no-history" target="_blank" href="<?php echo get_permalink($file['fileID']).'/download/'.$file_id; ?>">
-          Click to download
-        </a>
-
-        <?php endforeach;?>
-
-      <?php endif;?>
-
-      <!-- FOR GROUP FILE -->
-      <?php if($file['fileType']=='group-file'):?>
-        <div class="date"><?php echo get_the_date('m-d-Y', $file['fileID'] );?> </div>
-        <div class="title"><?php echo get_the_title($file['fileID']);?></div>
-
-        <?php
-        $filelink = get_post_meta( $file['fileID'], "group-file", true );
-        $filelink = $filelink[0];
-        $filelink = wp_get_attachment_url( $filelink['file'], 'full' );
+      downloadMaker($file['fileID'], $file['fileType'] );
+      ?>
 
 
-        ?>
-
-        <form target="_blank" class="download-submitter" method="post" action="<?php echo $siteDir;?>/downloader.php">
-         <input type="submit" class="dl-link" value="Click here to download"/>
-         <input type="hidden" value="<?php echo $filelink;?>" name="download-id" />
-         <input type="hidden" value="groupfile" name="download-type" />
-       </form>
-
-      <?php endif;?>
-
-      </li>
     <?php endfor;?>
     </ul>
 
-    <a class="no-history archive" href="<?php echo home_url('/file-archive/?building_id='.$s['property-id']);?>">
+    <a class="no-history archive" href="<?php echo home_url('/file-archive/?building_id='.$catInfo->term_id);?>">
 <?php echo $catInfo->name;?> Archive
     </a>
 

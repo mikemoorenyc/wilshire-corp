@@ -1,4 +1,21 @@
 <?php
+function redirect_non_admin_users() {
+	if ( ! current_user_can( 'manage_options' ) && '/wp-admin/admin-ajax.php' != $_SERVER['PHP_SELF'] ) {
+		wp_redirect( home_url('/investor-dashboard/') );
+		exit;
+	}
+}
+add_action( 'admin_init', 'redirect_non_admin_users' );
+function redirect_login_page() {
+    $login_page  = home_url( '/login/' );
+    $page_viewed = basename($_SERVER['REQUEST_URI']);
+
+    if( $page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
+        wp_redirect($login_page);
+        exit;
+    }
+}
+add_action('init','redirect_login_page');
 add_theme_support( 'menus' );
 
 //$siteDir = '/wp-content/themes/w25th-build';

@@ -2,8 +2,6 @@
 /**
  * Template Name: Edit Account
  */
-?>
-<?php
 include_once 'Mobile_Detect.php';
 $detect = new Mobile_Detect;
 if($detect->isMobile() == true) {
@@ -17,9 +15,6 @@ if(!is_user_logged_in()) {
   die();
 }
 
-?>
-
-<?php
 
 
  //$wpdb->hide_errors(); auth_redirect_login(); nocache_headers();
@@ -52,12 +47,10 @@ $errcolor = 'style="background-color:#FFEBE8;border:1px solid #CC0000;"';
 <?php get_header();?>
 <div id="investor-container">
 
-	<?php if ( ! have_posts() ) : ?>
-						<h1><?php _e( '404 - I&#39;m sorry but the page can&#39;t be found' ); ?></h1>
-						<p><a href="/">Go Home</a></p>
-	<?php endif; ?>
 
-	<?php while ( have_posts() ) : the_post(); ?>
+
+
+
 		<div class="content-holder">
 			<div class="investor-header">
 <h1><?php the_title(); ?></h1>
@@ -132,7 +125,11 @@ if ( $show_password_fields ) :
 	</div>
 
 
-	<?php endwhile; ?>
+
+  <div id="back-to-home">
+    <a href="<?php echo $homeURL;?>/investor-dashboard" class="no-history">Back to Investor Home</a>
+
+  </div>
 
 
 </div>

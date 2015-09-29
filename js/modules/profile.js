@@ -10,11 +10,13 @@ function runnerprofile () {
 }
 $(document).on('click','#home-page-content a.read-more', function(){
   if($(this).hasClass('_opened') == false) {
-    $('.read-more-content').slideDown(ts);
+    //$('.read-more-content').slideDown(ts);
+    $('.read-more-content').velocity('slideDown',{duration:ts});
     $(this).addClass('_opened');
     $(this).find('.text').html('Read Less');
   } else {
-    $('.read-more-content').slideUp(ts);
+    //$('.read-more-content').slideUp(ts);
+    $('.read-more-content').velocity('slideUp',{duration:ts});
     $(this).removeClass('_opened');
     $(this).find('.text').html('Read More');
   }

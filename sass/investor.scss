@@ -30,6 +30,31 @@
   }
   #file-container {
     margin-top: 4em;
+    .file-list {
+      > li {
+        position: relative;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        &:before {
+          @extend %before-fix;
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          margin-left: -8px;
+          width: 16px;
+          height: 0;
+          border-top:1px solid white;
+        }
+        .date {
+          font-size: 14px;
+        }
+        .dl-link {
+          cursor: pointer;
+          color: $teal;
+          font-weight: bold;
+        }
+      }
+    }
     > ul {
       letter-spacing: -4px;
       > li {
@@ -75,31 +100,7 @@
           a.archive {
             font-size: 16px;
           }
-          .file-list {
-            > li {
-              position: relative;
-              margin-bottom: 15px;
-              padding-bottom: 15px;
-              &:before {
-                @extend %before-fix;
-                position: absolute;
-                left: 50%;
-                bottom: 0;
-                margin-left: -8px;
-                width: 16px;
-                height: 0;
-                border-top:1px solid white;
-              }
-              .date {
-                font-size: 14px;
-              }
-              .dl-link {
-                cursor: pointer;
-                color: $teal;
-                font-weight: bold;
-              }
-            }
-          }
+
         }
       }
     }
@@ -171,4 +172,55 @@
     text-align: left;
     font-size: 14px;
   }
+}
+
+
+ul#archive-list {
+  .date-opener.section-0 {
+    h4 {
+      margin-top: 1em;
+    }
+  }
+  .date-opener {
+    .file-list {
+      display:none;
+    }
+    &.__opened {
+      h4 {
+        a {
+          .arrow svg {
+            transform:rotate(180deg);
+          }
+        }
+      }
+    }
+    h4 {
+      margin-bottom: .5em;
+      a {
+        display:block;
+        span.copy {
+          display:inline-block;
+          position: relative;
+          font-weight:bold;
+          color:$teal;
+          padding-right: 15px;
+          .arrow svg {
+            width:8px;
+            height: 5px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top:-2.5px;
+
+            * {
+              fill:$teal;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+#back-to-home {
+  padding-top: .5em;
 }
