@@ -13,7 +13,7 @@ Still to do
 -----------
 - ~~Edit Account page~~
 - ~~Remove property category from WCK~~
-- Property Archive page
+- ~~Property Archive page~~
 - ~~make sure team bg works (doesn't work on server)~~
 - ~~fix the single team page to work if there's no bg~~
 - ~~Add in loading indicator~~
