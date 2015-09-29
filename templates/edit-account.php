@@ -2,13 +2,7 @@
 /**
  * Template Name: Edit Account
  */
-include_once 'Mobile_Detect.php';
-$detect = new Mobile_Detect;
-if($detect->isMobile() == true) {
-  $siteURL = get_site_url();
-  header("Location: ".$siteURL);
-  die();
-}
+
 if(!is_user_logged_in()) {
   $siteURL = get_site_url();
   header("Location: ".$siteURL);
@@ -42,9 +36,7 @@ $errmsg = '<p class="login-msg error">' . $errmsg . '</p>';
 $errcolor = 'style="background-color:#FFEBE8;border:1px solid #CC0000;"';
 }
 }
-?>
-
-<?php get_header();?>
+get_header();?>
 <div id="investor-container">
 
 

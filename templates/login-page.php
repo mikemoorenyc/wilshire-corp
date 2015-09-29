@@ -2,8 +2,7 @@
 /**
  * Template Name: Login Page
  */
-?>
-<?php get_header();?>
+get_header();?>
 
 <?php
 $login  = (isset($_GET['login']) ) ? $_GET['login'] : 0;

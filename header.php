@@ -11,6 +11,14 @@ if($detect->isMobile() == true) {
   $mobileFront = 'false';
 }
 
+//Investor Section
+$investorPage = intval(get_post_meta( $post->ID , "_investor-section", true ));
+if($investorPage == 1 && $mobile == true) {
+  $siteURL = get_site_url();
+  header("Location: ".$siteURL);
+  die();
+}
+
 //GET POST SLUG
 global $post;
 $slug = $post->post_name;

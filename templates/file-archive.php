@@ -2,23 +2,14 @@
 /**
  * Template Name: File Archive
  */
-?>
-<?php
-include_once 'Mobile_Detect.php';
-$detect = new Mobile_Detect;
-if($detect->isMobile() == true) {
-  $siteURL = get_site_url();
-  header("Location: ".$siteURL);
-  die();
-}
+
 
 if(!is_user_logged_in()) {
   $siteURL = get_site_url();
   header("Location: ".$siteURL);
   die();
 }
-?>
-<?php get_header();
+get_header();
 global $siteTitle;
 ?>
 

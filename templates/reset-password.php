@@ -2,8 +2,7 @@
 /**
  * Template Name: Reset Password Page
  */
-?>
-<?php get_header();?>
+ get_header();?>
 
 
 
