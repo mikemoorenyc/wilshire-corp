@@ -19,3 +19,5 @@ Still to do
 - ~~Add in loading indicator~~
 - ~~Disable interior clicks on "page loading"~~
 - ~~switch p margins to padding in strategy carousel~~
+- REMAKE HOVER OVERLAY AS NO SVG
+- Check meta calls
