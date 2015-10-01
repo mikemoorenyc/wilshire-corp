@@ -4,21 +4,24 @@
 function portfolio_init() {
     $args = array(
       'label' => 'Portfolio',
-        'public' => true,
-        'show_ui' => true,
-        'capability_type' => 'page',
-        'hierarchical' => true,
-        'has_archive' => true,
-        'rewrite' => array('slug' => 'portfolio'),
-        'query_var' => true,
-        'menu_icon' => get_bloginfo('template_url').'/assets/imgs/post-property.png',
-        'supports' => array(
-            'title',
-            'editor',
-            'revisions',
-            'thumbnail',
-            'page-attributes')
-        );
+      'public' => true,
+      'labels' => array(
+        'add_new_item' => 'Add New Property'
+      ),
+      'show_ui' => true,
+      'capability_type' => 'page',
+      'hierarchical' => true,
+      'has_archive' => true,
+      'rewrite' => array('slug' => 'portfolio'),
+      'query_var' => true,
+      'menu_icon' => get_bloginfo('template_url').'/assets/imgs/post-property.png',
+      'supports' => array(
+          'title',
+          'editor',
+          'revisions',
+          'thumbnail',
+        )
+      );
     register_post_type( 'portfolio', $args );
 }
 add_action( 'init', 'portfolio_init' );
@@ -41,7 +44,7 @@ function team_init() {
             'editor',
             'revisions',
             'thumbnail',
-            'page-attributes')
+          )
         );
     register_post_type( 'team', $args );
 }
@@ -64,7 +67,7 @@ function strategy_init() {
             'title',
             'revisions',
             'thumbnail',
-            'page-attributes')
+          )
         );
     register_post_type( 'strategy', $args );
 }
@@ -78,6 +81,7 @@ function group_files_init() {
         'exclude_from_search' => true,
         'publicly_queryable' => false,
         'show_in_admin_bar' => false,
+        'show_in_menu' => false,
         'capability_type' => 'page',
         'hierarchical' => true,
         'has_archive' => false,
@@ -87,9 +91,8 @@ function group_files_init() {
         'menu_icon' => 'dashicons-media-default',
         'supports' => array(
             'title',
-            'revisions',
-            'thumbnail',
-            'page-attributes')
+            'revisions'
+          )
         );
     register_post_type( 'group-files', $args );
 }

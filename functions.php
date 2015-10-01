@@ -15,6 +15,9 @@ function redirect_login_page() {
         exit;
     }
 }
+
+
+
 add_action('init','redirect_login_page');
 add_theme_support( 'menus' );
 

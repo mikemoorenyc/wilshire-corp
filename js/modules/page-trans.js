@@ -32,10 +32,12 @@ function theHistory() {
 
           title = $.trim(find_all($head, 'title').last().html()),
           $content = $.trim(find_all($body, '.ajax-catcher').first().html());
+          description = $.trim(find_all($head, 'meta[name="description"]').last().attr('content'));
 
       return {
           'title': title,
-          '$content': $content
+          '$content': $content,
+          'description': description
       }
   }
 
@@ -120,6 +122,7 @@ function theHistory() {
 
             if (response.title.length) {
                 $('title').last().html(response.title);
+                $('meta[name="description"]').attr('content', response.description);
             }
 
             //NEW LOAD

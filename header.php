@@ -118,7 +118,7 @@ if ( is_front_page() ) {
 endwhile;
 
 else: ?>
-<?php $siteDesc = ''; ?>
+<?php $siteDesc = get_bloginfo('description'); ?>
 <?php endif; ?><?php echo $siteDesc;?>" />
 
 <meta charset="UTF-8" />
@@ -201,7 +201,13 @@ ga('create', 'UA-67984898-1', 'auto');
 
   if(has_post_thumbnail() || ($navslug == 'team' && is_archive() )) {
 
-
+    if($navslug == 'team' && $interior == 'interior') {
+      $portside = get_post_meta($post->ID, 'team-member-meta', true);
+      $portside = $portside[0];
+      $portside = $portside['portrait-side'];
+    } else {
+      $portside = '';
+    }
 
     $tid = get_post_thumbnail_id();
     if($navslug == 'team' && is_archive() ) {
@@ -213,7 +219,7 @@ ga('create', 'UA-67984898-1', 'auto');
     $ts = $ts[0];
     ?>
 
-      <div class="holder">
+      <div class="holder <?php echo $portside;?>">
         <img src="" data-lg="<?php echo $tl;?>" data-sm="<?php echo $ts;?>" class="hide preload dyna-load bg-loader"/>
       </div>
 

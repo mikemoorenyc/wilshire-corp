@@ -171,7 +171,7 @@
     position: relative;
     width:100%;
     img {
-      opacity: 0;
+    //  opacity: 0;
       transition: opacity $ts;
       max-width: 90%;
       max-width: 90%;
@@ -248,7 +248,7 @@ html.no-touch {
       a {
         overflow:hidden;
         .hover {
-          position: absolute;
+          position: absolute;;
           right: 0;
           bottom: 0;
           width: 200%;

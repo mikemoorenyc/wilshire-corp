@@ -10,7 +10,7 @@ function runnerportfolio() {
   });
 
   if(!(Modernizr.touch)) {
-    $('#port-list li a .overlay').after('<span class="hover"><svg><use xlink:href="#port-hover"/></svg></span>');
+    $('#port-list li a .overlay').after('<span class="hover"><svg><use xlink:href="#port-hover" /></svg></span>');
   }
 
   //INTERIOR

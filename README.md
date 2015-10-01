@@ -19,5 +19,5 @@ Still to do
 - ~~Add in loading indicator~~
 - ~~Disable interior clicks on "page loading"~~
 - ~~switch p margins to padding in strategy carousel~~
-- REMAKE HOVER OVERLAY AS NO SVG
-- Check meta calls
+- ~~REMAKE HOVER OVERLAY AS NO SVG~~ (fuck it)
+- FIX THE PORTFOLIO GALLERY TO ONLY LOAD THE GALLERY AFTER THE GALLERY HAS SET UP

@@ -9,16 +9,16 @@ $(document).on('click', 'h1.strat-title a',function(){
   var count = $(theParent).data('count');
   if($(theParent).hasClass('__activated') == false) {
     if($('.strat-block.__activated').length > 0) {
-      $('.bg-flipper.__activated').removeClass("__activated");
-      $('.strat-block.__activated .content').slideUp(ts, function(){
-        $(theParent).find('.content').slideDown(ts);
-        $(theParent).addClass('__activated');
 
+      $('.strat-block.__activated .content').velocity('slideUp',{duration:ts, complete:function(){
+        $(theParent).find('.content').velocity('slideDown',{duration:ts});
+        $(theParent).addClass('__activated');
+        $('.bg-flipper.__activated').removeClass("__activated");
         $('.bg-flipper.count-'+count).addClass('__activated');
-      });
+      }});
       $('.strat-block.__activated').removeClass('__activated');
     } else {
-      $(theParent).find('.content').slideDown(ts);
+      $(theParent).find('.content').velocity('slideDown',{duration:ts});
       $(theParent).addClass('__activated');
       $('.bg-flipper.count-'+count).addClass('__activated');
     }
@@ -28,7 +28,7 @@ $(document).on('click', 'h1.strat-title a',function(){
 
 
   } else {
-    $(theParent).find('.content').slideUp(ts);
+    $(theParent).find('.content').velocity('slideUp',{duration:ts});
     $(theParent).removeClass('__activated');
     $('.bg-flipper.__activated').removeClass("__activated");
   }
@@ -41,10 +41,10 @@ $(document).on('click', '.strat-block .headers a', function(){
     var count = $(this).data('count');
     $('.strat-block .headers h2 a').removeClass('__activated');
     $(this).addClass('__activated');
-    $('.strat-block .sub-content.__activated').slideUp(ts,function(){
+    $('.strat-block .sub-content.__activated').velocity('slideUp',{duration:ts,complete:function(){
       $(this).removeClass("__activated");
-      $('.strat-block .sub-content[data-count="'+count+'"]').slideDown(ts).addClass("__activated");
-    });
+      $('.strat-block .sub-content[data-count="'+count+'"]').velocity('slideDown',{duration:ts}).addClass("__activated");
+    }});
 
   }
   return false;

@@ -23,7 +23,7 @@ $meta = $meta[0];
 
   </div>
 
-  <div class="content">
+  <div class="content <?php echo $meta['portrait-side'];?>">
     <div class="head-block">
       <h1 class="top"><?php the_title();?></h1>
       <div class="title sub">

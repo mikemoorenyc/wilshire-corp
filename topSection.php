@@ -1,7 +1,7 @@
 <header id="main-header" class="clearfix">
 <div class="inner">
   <h1 id="logo">
-    <a href="<?php echo $homeURL;?>">
+    <a href="<?php echo $homeURL;?>/">
     <span class="hide">
       <?php echo $siteTitle;?>
     </span>

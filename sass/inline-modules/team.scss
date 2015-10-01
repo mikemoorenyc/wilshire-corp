@@ -26,6 +26,11 @@
     }
   }
 }
+#background-image.team {
+  .holder {
+    background-position: top center;
+  }
+}
 #background-image.team.interior {
   @media($dt-max) {
     display: none;
@@ -44,6 +49,9 @@
     @media($dt) {
       max-width:475px;
       margin: 0 50px;
+      &.Left {
+        float: right;
+      }
     }
     .head-block{
       padding: 18px 0;
@@ -63,7 +71,10 @@
   #background-image.team.interior {
     .holder {
       filter: none;
-      background-position: top right;
+      background-position: top center;
+      &.Left {
+        background-position: top center;
+      }
     }
     &:after {
       display: none;
