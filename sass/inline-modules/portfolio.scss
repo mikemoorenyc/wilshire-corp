@@ -120,12 +120,31 @@
   }
 }
 #port-content {
+
   font-size:(12em/14);
   .inner {
     padding: 12px;
   }
   p {
     margin: 0;
+  }
+}
+ul#stat-list {
+  >li {
+    >span {
+      float: left;
+      width: 50%;
+      &.heading {
+        text-align:right;
+        padding-right:2.5px;
+        color: $teal;
+      }
+      &.copy {
+        padding-left:2.5px;
+        text-align: left;
+      }
+
+    }
   }
 }
 
@@ -188,12 +207,13 @@
       }
     }
     .copy-holder {
+
       @media($dt) {
         position:absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
-        max-width: 615px;
+        width: 615px;
         h1 {
           color:$teal;
           font-size: $dt-big;
@@ -203,6 +223,7 @@
           p {
             margin: 0;
           }
+
         }
       }
     }
@@ -249,10 +270,10 @@ html.no-touch {
         overflow:hidden;
         .hover {
           position: absolute;;
-          right: 0;
-          bottom: 0;
-          width: 200%;
-          height: 200%;
+          right: -5px;
+          bottom: -5px;
+          width: 210%;
+          height: 210%;
           transform-origin: bottom right;
           transform: scale(0);
           transition: transform $ts;

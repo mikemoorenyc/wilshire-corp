@@ -17,9 +17,8 @@ function portfolio_init() {
       'menu_icon' => get_bloginfo('template_url').'/assets/imgs/post-property.png',
       'supports' => array(
           'title',
-          'editor',
           'revisions',
-          'thumbnail',
+          'thumbnail'
         )
       );
     register_post_type( 'portfolio', $args );
@@ -98,5 +97,46 @@ function group_files_init() {
 }
 add_action( 'init', 'group_files_init' );
 
+
+
+//MAKE PORTFOLIO CUSTOM CONTENT
+function portfolio_content($content) {
+  global $post;
+  if(is_single($post->ID) && get_post_type($post->ID) === "portfolio"){
+
+    ob_start();
+    ?>
+
+    <?php
+    $stats = get_post_meta( $post->ID, 'property-stats', true );
+    if($stats !== '' && $stats !== null && $stats !== false):
+      ?>
+      <ul id="stat-list" class="no-style">
+        <?php
+        foreach($stats as $s):?>
+          <li class="clearfix">
+            <span class="heading"><?php echo $s['stat-heading'];?>: </span>
+            <span class="copy"><?php echo $s['stat'];?></span>
+
+          </li>
+        <?php
+        endforeach;
+        ?>
+      </ul>
+      <?php
+    endif;
+
+    ?>
+
+
+
+    <?php
+    return ob_get_clean();
+
+  } else {
+    return $content;
+  }
+}
+add_filter('the_content', 'portfolio_content',21);
 
 ?>

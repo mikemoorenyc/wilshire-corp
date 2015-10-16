@@ -10,7 +10,7 @@ html.mix-blend-mode {
 
 #strat-content {
   @media($dt) {
-    font-size: (18em/16);
+    //font-size: (18em/16);
   }
 
   .strat-block {
@@ -30,6 +30,7 @@ html.mix-blend-mode {
       }
       a {
         color: $teal;
+        display:block;
       }
 
     }
@@ -81,7 +82,7 @@ html.mix-blend-mode {
 //MOUSE EVENTS
 html.no-touch {
   .strat-block {
-    > h1 {
+    > h1 a{
       opacity: .5;
       transition:opacity $ts;
       &:hover {
@@ -89,7 +90,7 @@ html.no-touch {
       }
     }
     &.__activated {
-      > h1 {
+      > h1 a{
         opacity:1;
       }
     }

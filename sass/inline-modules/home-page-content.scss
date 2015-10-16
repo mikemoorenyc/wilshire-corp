@@ -6,6 +6,7 @@
   h1 {
     font-size: 2em;
     margin-bottom:.5em;
+    color:$teal;
     @media($dt) {
       font-size:$dt-big;
       margin-bottom:1em;
@@ -13,7 +14,7 @@
   }
   p {
     font-size: (16em/14);
-    color:$teal;
+
     margin: 0;
     padding: 0 0 1em 0;
     &:last-child {
@@ -27,7 +28,7 @@
     display:block;
     font-size: (13em/14);
     margin-top: 2em;
-    color:white;
+    color:$teal;
     &._opened {
       svg {
         transform:rotate(180deg);
@@ -37,10 +38,10 @@
       margin:5px auto 0 auto;
       width: 16px;
       height:10px;
-      fill:white;
+      fill:$teal;
 
       .st0,*, polygon {
-        fill:white;
+        fill:$teal;
 
       }
     }

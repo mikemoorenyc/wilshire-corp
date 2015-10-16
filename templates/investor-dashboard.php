@@ -195,9 +195,8 @@ echo '<h2> You have no files for view at this time.</h2>';
 endif;
 //WE HAVE FILES!
 if(count($siloArray) > 0):?>
-<ul class="clearfix no-style">
-<?php foreach($siloArray as $s):?>
-  <li class="property">
+<ul class="clearfix no-style"><?php foreach($siloArray as $s):?>
+<li class="property">
     <div class="prop-header">
       <?php $catInfo = get_term_by('slug', $s['property-slug'], 'properties'); ?>
       <h2>
@@ -280,8 +279,7 @@ if(count($siloArray) > 0):?>
 
   </div>
 
-  </li>
-<?php endforeach;?>
+  </li><?php endforeach;?>
 </ul>
 
 <?php endif;?>

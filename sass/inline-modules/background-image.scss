@@ -23,12 +23,19 @@
     width: 100%;
     height: 100%;
     background: rgba($dark-blue, .9);
+    z-index:2;
   }
   .bg-flipper {
     opacity: 0;
     transition:opacity $ts;
     &.__hovering, &.__activated {
       opacity: 1;
+    }
+    &.__diminished {
+      opacity: 0 !important;
+    }
+    &.__activated {
+      z-index:1;
     }
   }
 }

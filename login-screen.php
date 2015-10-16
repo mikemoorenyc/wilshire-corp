@@ -38,7 +38,7 @@ add_action('wp_logout','logout_page');
  *
  * This function is attached to the 'admin_init' action hook.
  */
-
+include 'encrypter.php';
 
 //INVESTOR VARIABLES
 function add_custom_query_var( $vars ){
@@ -81,7 +81,7 @@ function downloadMaker($id, $fileType) {
     $filelink = get_post_meta( $id, "group-file", true );
     $filelink = $filelink[0];
     $filelink = wp_get_attachment_url( $filelink['file'], 'full' );
-
+    $filelink = encrypt_decrypt('encrypt',$filelink);
 
     ?>
 
