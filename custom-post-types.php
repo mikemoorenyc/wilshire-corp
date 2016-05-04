@@ -76,6 +76,9 @@ add_action( 'init', 'strategy_init' );
 function group_files_init() {
     $args = array(
       'label' => 'Group Files',
+      'labels' => array(
+        'add_new_item' => 'Add New Group File'
+      ),
         'public' => true,
         'exclude_from_search' => true,
         'publicly_queryable' => false,

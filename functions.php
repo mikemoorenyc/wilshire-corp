@@ -38,6 +38,9 @@ include 'login-screen.php';
 //NEW TAXONOMIES
 include 'new-tax.php';
 
+//NEW META FOR LOCATION
+include 'location-meta.php';
+
 
 
 // Custom functions

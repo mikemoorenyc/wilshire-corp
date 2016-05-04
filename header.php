@@ -62,7 +62,7 @@ $homeURL = esc_url( home_url(  ) );
 
 //DECLARE THE SITE TITLE, SAVE A DB QUERY
 global $siteTitle;
-$siteTitle = 'WILSHIRE CAPITAL';
+$siteTitle = 'WILSHIRE CAPITAL PARTNERS';
 
 //DECLARE THE PAGE EXCERPT
 global $siteDesc;
@@ -73,7 +73,7 @@ $siteDesc = '';
 <head>
 
 <!-- LOADING IN ALL CSS AT ONCE -->
-<link rel="stylesheet" href="<?php echo $siteDir;?>/css/main.css?v=<?php echo time();?>" />
+<link rel="stylesheet" href="<?php echo $siteDir;?>/css/main.css?v=prod1.1" />
 
 
 <?php
